@@ -1,6 +1,8 @@
 ﻿Imports System.Drawing
 Imports System.Net.NetworkInformation
+Imports System.Reflection
 Imports System.Windows.Forms
+Imports Microsoft.Win32
 
 Public Class NetworkSpeedForm
     Inherits Form
@@ -55,9 +57,13 @@ Public Class NetworkSpeedForm
         Dim exitItem As New ToolStripMenuItem("Exit")
         AddHandler exitItem.Click, AddressOf ExitApp
 
+        Dim exitItem2 As New ToolStripMenuItem("Exit and Remove from Startup")
+        AddHandler exitItem2.Click, AddressOf ExitApp2
+
         contextMenu.Items.Add(aboutItem)
         contextMenu.Items.Add(New ToolStripSeparator())
         contextMenu.Items.Add(exitItem)
+        contextMenu.Items.Add(exitItem2)
 
         Me.ContextMenuStrip = contextMenu
 
@@ -82,6 +88,9 @@ Public Class NetworkSpeedForm
         End If
 
         Me.Tag = New Tuple(Of Double, Double)(0, 0)
+
+        AddToStartup()
+
     End Sub
 
     ' ---------------- Drag logic ----------------
@@ -153,4 +162,43 @@ Public Class NetworkSpeedForm
         Timer1.Stop()
         Application.Exit()
     End Sub
+
+    Private Sub ExitApp2(sender As Object, e As EventArgs)
+        RemoveFromStartup()
+        Timer1.Stop()
+        Application.Exit()
+    End Sub
+
+    Private Sub InitializeComponent()
+        Me.SuspendLayout()
+        '
+        'NetworkSpeedForm
+        '
+        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Name = "NetworkSpeedForm"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+    Private Sub AddToStartup()
+        Try
+            Dim rk As RegistryKey = Registry.CurrentUser.OpenSubKey(
+                "SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
+            rk.SetValue("iONE Speed Monitor", """" & Application.ExecutablePath & """")
+        Catch ex As Exception
+            MessageBox.Show("Failed to add to startup: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub RemoveFromStartup()
+        Try
+            Dim rk As RegistryKey = Registry.CurrentUser.OpenSubKey(
+            "SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True)
+            rk.DeleteValue("iONE Speed Monitor", False)
+        Catch ex As Exception
+            MessageBox.Show("Failed to remove from startup: " & ex.Message)
+        End Try
+    End Sub
+
+
 End Class
