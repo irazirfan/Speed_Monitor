@@ -16,6 +16,19 @@ Public Class NetworkSpeedForm
     ' Context menu
     Private contextMenu As ContextMenuStrip
 
+    Private Sub ShowAbout(sender As Object, e As EventArgs)
+        MessageBox.Show(
+            "iONE Speed Monitor" & vbCrLf & vbCrLf &
+            "Version 1.0" & vbCrLf &
+            "Author: Iraz" & vbCrLf &
+            "© 2026 iONE" & vbCrLf & vbCrLf &
+            "Lightweight network speed monitor for Windows.",
+            "About",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information
+        )
+    End Sub
+
     Public Sub New()
         ' ---------------- Form setup ----------------
         Me.FormBorderStyle = FormBorderStyle.None
@@ -34,12 +47,20 @@ Public Class NetworkSpeedForm
             bounds.Bottom - Me.Height - 0
         )
 
-        ' ---------------- Context Menu ----------------
         contextMenu = New ContextMenuStrip()
+
+        Dim aboutItem As New ToolStripMenuItem("About")
+        AddHandler aboutItem.Click, AddressOf ShowAbout
+
         Dim exitItem As New ToolStripMenuItem("Exit")
         AddHandler exitItem.Click, AddressOf ExitApp
+
+        contextMenu.Items.Add(aboutItem)
+        contextMenu.Items.Add(New ToolStripSeparator())
         contextMenu.Items.Add(exitItem)
+
         Me.ContextMenuStrip = contextMenu
+
 
         ' ---------------- Drag handlers ----------------
         AddHandler Me.MouseDown, AddressOf Form_MouseDown
