@@ -1,6 +1,6 @@
 # iONE Speed Monitor
 
-**Version:** 1.0  
+**Version:** 1.2  
 **Author:** iONE  
 
 ---
