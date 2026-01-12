@@ -26,13 +26,13 @@ DefaultDirName={autopf}\{#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=E:\Important\git-projects\License.txt
-InfoBeforeFile=E:\Important\git-projects\EULA.txt
-InfoAfterFile=E:\Important\git-projects\Finish.txt
+LicenseFile=E:\Important\git-projects\innoSetup_txt\License.txt
+InfoBeforeFile=E:\Important\git-projects\innoSetup_txt\EULA.txt
+InfoAfterFile=E:\Important\git-projects\innoSetup_txt\Finish.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputBaseFilename=iONE_SM_Setup
-SetupIconFile=C:\Users\iraz\Downloads\temp\iONE.ico
+SetupIconFile=E:\Important\git-projects\Speed_Monitor\iONE_setup.ico
 SolidCompression=yes
 WizardStyle=modern dark windows11
 
