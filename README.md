@@ -32,7 +32,7 @@ Unlike traditional system tray monitors, it shows the speeds directly in a float
 ## Installation
 
 1. Download the installer from GitHub:  
-   [Download iONE Speed Monitor 1.0](https://github.com/irazirfan/Speed_Monitor/releases/download/v1.0/iONE_SM_Setup.exe)  
+   [Download iONE Speed Monitor 1.2](https://github.com/irazirfan/Speed_Monitor/releases/download/v1.2/iONE_SM_Setup.exe)  
 
 2. Run the installer (`iONE_SM_Setup.exe`) and follow the on-screen instructions.  
 
