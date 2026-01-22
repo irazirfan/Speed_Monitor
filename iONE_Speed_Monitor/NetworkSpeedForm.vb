@@ -21,7 +21,7 @@ Public Class NetworkSpeedForm
     Private Sub ShowAbout(sender As Object, e As EventArgs)
         MessageBox.Show(
             "iONE Speed Monitor" & vbCrLf & vbCrLf &
-            "Version 1.2" & vbCrLf &
+            "Version 1.3" & vbCrLf &
             "Author: Iraz" & vbCrLf &
             "© 2026 iONE" & vbCrLf & vbCrLf &
             "Lightweight network speed monitor for Windows.",
@@ -222,5 +222,7 @@ Public Class NetworkSpeedForm
         End Try
     End Sub
 
+    Private Sub NetworkSpeedForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
 End Class

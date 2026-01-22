@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "iONE Speed Monitor"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.3"
 #define MyAppPublisher "Iraz Irfan"
 #define MyAppURL "https://github.com/irazirfan/Speed_Monitor"
 #define MyAppExeName "iONE_Speed_Monitor.exe"
