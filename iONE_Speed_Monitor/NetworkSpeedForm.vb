@@ -143,12 +143,34 @@ Public Class NetworkSpeedForm
     End Sub
 
     ' ---------------- Helpers ----------------
+    ' 260122 II commented and added to start speed from KB/s & show 1 digit after decimal point
+    'Private Function FormatSpeed(bytesPerSec As Double) As String
+    '    If bytesPerSec < 1024 Then Return $"{bytesPerSec:0} B/s"
+    '    bytesPerSec /= 1024
+    '    If bytesPerSec < 1024 Then Return $"{bytesPerSec:0.0} KB/s"
+    '    bytesPerSec /= 1024
+    '    Return $"{bytesPerSec:0.00} MB/s"
+    'End Function
     Private Function FormatSpeed(bytesPerSec As Double) As String
-        If bytesPerSec < 1024 Then Return $"{bytesPerSec:0} B/s"
-        bytesPerSec /= 1024
-        If bytesPerSec < 1024 Then Return $"{bytesPerSec:0.0} KB/s"
-        bytesPerSec /= 1024
-        Return $"{bytesPerSec:0.00} MB/s"
+        ' Convert to KB first
+        Dim kbPerSec As Double = bytesPerSec / 1024
+
+        ' Enforce minimum display value
+        If kbPerSec < 0.1 Then kbPerSec = 0.1
+
+        If kbPerSec < 1024 Then
+            Return $"{kbPerSec:0.0} KB/s"
+        End If
+
+        ' Convert to MB
+        Dim mbPerSec As Double = kbPerSec / 1024
+        If mbPerSec < 1024 Then
+            Return $"{mbPerSec:0.0} MB/s"
+        End If
+
+        ' Convert to GB
+        Dim gbPerSec As Double = mbPerSec / 1024
+        Return $"{gbPerSec:0.0} GB/s"
     End Function
 
     Private Function GetActiveNIC() As NetworkInterface
